@@ -9,7 +9,7 @@ import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Servicio;
 public class Ejemplo {
 
 	public static void main(String[] args) {
-		List<Servicio> padre = new ArrayList<Servicio>();
+		ArrayList<Servicio> padre = new ArrayList<Servicio>();
 		Random rand = new Random();
 		NSGA2 algor = new NSGA2();
 		
@@ -20,8 +20,9 @@ public class Ejemplo {
 			padre.get(i).setConsumo(rand.nextDouble()*1000);
 			padre.get(i).setCosto(rand.nextDouble()*100);
 		}
-
-		List<ArrayList<Servicio>> soluciones = algor.nsga2(padre); 
+		double[][] fitness = new double[4][2];
+		List<ArrayList<Servicio>> soluciones = algor.nsga2(padre, fitness);
+		//System.out.println("fitness:" + fitness[0][0]);
 
 	}
 

@@ -18,22 +18,22 @@ public class NSGA2 {
 	public ArrayList<Integer> tiposGlobales = new ArrayList<Integer>();
 	public static Random rand = new Random();
 	
-	public List<ArrayList<Servicio>> nsga2(List<Servicio> servicios) {
+	public List<ArrayList<Servicio>> nsga2(List<Servicio> servicios, double[][] fit) {
 		Cromosoma primero = new Cromosoma();
 		int tamanioCromosoma = servicios.size();
 		String cadenaInicia = "Cromosoma inicial: [";
 		List<Double> costos = new ArrayList<Double>();
 		List<Double> consumos = new ArrayList<Double>();
-		double[] fitInicial = new double[2];
+		//double[] fitInicial = new double[2];
 		for(Servicio serv:servicios) {
 			costos.add(serv.getCosto());
 			consumos.add(serv.getConsumo());
 			tiposGlobales.add(serv.getTipo());
 			cadenaInicia += " ("+serv.getTipo()+","+String.format("%.2f",serv.getCosto())+"," +String.format("%.2f",serv.getConsumo())+") ";
 		}
-		fitInicial[0] = FuncionesObjetivo.costo(costos);
-		fitInicial[1] = FuncionesObjetivo.huella(consumos,tiposGlobales,tamanioCromosoma);
-		cadenaInicia += "]\nCosto: $"+ fitInicial[0] + ", Huella: " + fitInicial[1] + "tCO2\n";
+		fit[0][0] = FuncionesObjetivo.costo(costos);
+		fit[0][1] = FuncionesObjetivo.huella(consumos,tiposGlobales,tamanioCromosoma);
+		cadenaInicia += "]\nCosto: $"+ fit[0][0] + ", Huella: " + fit[0][1] + "tCO2\n";
 		
 		System.out.println(cadenaInicia);
 		
@@ -80,6 +80,8 @@ public class NSGA2 {
 			fitness[j][1] = FuncionesObjetivo.huella(poblacion[j].getConsumos(),tiposGlobales,tamanioCromosoma);
 		}
 		List<ArrayList<Servicio>> alternativas = new ArrayList<ArrayList<Servicio>>();
+		alternativas.add(new ArrayList<Servicio>());
+		alternativas.get(0).addAll(servicios);
 		for(int i = 0; i < 3; i++) {
 			alternativas.add(new ArrayList<Servicio>());
 			String cadena = "Solucion " + (i+1) + ": [";
@@ -91,6 +93,8 @@ public class NSGA2 {
 				alternativas.get(i).get(j).setIdServicio(servicios.get(j).getIdServicio());
 				cadena += " ("+alternativas.get(i).get(j).getTipo()+","+String.format("%.2f",alternativas.get(i).get(j).getCosto())+"," +String.format("%.2f",alternativas.get(i).get(j).getConsumo())+") ";
 			}
+			fit[i+1][0] = fitness[i][0];
+			fit[i+1][1] = fitness[i][1];
 			cadena += "]\nCosto: $"+ fitness[i][0] + ", Huella: " + fitness[i][1] + "tCO2\n";
 			System.out.println(cadena);
 		}

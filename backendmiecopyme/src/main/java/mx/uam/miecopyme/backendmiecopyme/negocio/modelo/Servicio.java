@@ -40,11 +40,11 @@ public class Servicio {
 	private Integer tipo;
 	
 	@NotNull
-	@ApiModelProperty(notes = "Consumo del servicio", required = true)
+	@ApiModelProperty(notes = "Huella de carbono de la pyme", required = true)
 	private Double consumo;
 	
 	@NotNull
-	@ApiModelProperty(notes = "Costo del servicio", required = true)
+	@ApiModelProperty(notes = "Costo de la pyme", required = true)
 	private Double costo;
 	
 	
