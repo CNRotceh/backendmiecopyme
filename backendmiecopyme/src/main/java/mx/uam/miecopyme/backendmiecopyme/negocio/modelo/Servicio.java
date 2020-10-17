@@ -37,7 +37,7 @@ public class Servicio {
 	
 	@NotBlank
 	@ApiModelProperty(notes = "Tipo de servicio", required = true)
-	private String tipo;
+	private Integer tipo;
 	
 	@NotNull
 	@ApiModelProperty(notes = "Consumo del servicio", required = true)
