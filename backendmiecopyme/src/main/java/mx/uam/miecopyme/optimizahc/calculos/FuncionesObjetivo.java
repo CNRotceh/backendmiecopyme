@@ -1,5 +1,6 @@
 package mx.uam.miecopyme.optimizahc.calculos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Servicio;
@@ -14,7 +15,7 @@ public class FuncionesObjetivo {
 		return costoTotal;
 	}
 	
-	public static double huella(List<Double> consumos, List<Integer> tipos, int tamanioCromosoma) {
+	public static double huella(List<Double> consumos, ArrayList<Integer> tipos, int tamanioCromosoma) {
 		double huella = 0.0;
 		for(int i = 0; i < tamanioCromosoma; i++) {
 			switch(tipos.get(i)) {
