@@ -35,11 +35,11 @@ public class ServicioController {
 	@Autowired
 	private ServicioService servicioService;
 	
-	@ApiOperation(value = "Crear servicio",notes = "Permite crear un nuevo servicio") // Documentacion del api
+	@ApiOperation(value = "Crear servicios",notes = "Permite crear un nuevo servicio") // Documentacion del api
 	@PostMapping(path = "/servicios", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity <?> create(@RequestBody @Valid Servicio nuevoServicio) { //Validaciones
+	public ResponseEntity <?> create(@RequestBody @Valid Servicio[] nuevoServicio) { //Validaciones
 		log.info("Recibí llamada a create con " + nuevoServicio);
-		Servicio servicio = servicioService.create(nuevoServicio);
+		Servicio[] servicio = servicioService.create(nuevoServicio);
 		
 		if(servicio != null) {
 			return ResponseEntity.status(HttpStatus.CREATED).body(servicio);

@@ -28,10 +28,13 @@ public class ServicioService {
 	 * @return el servicio que se acaba de crear si la creacion es exitosa, null de lo contrario
 	 * 
 	 */
-	public Servicio create(Servicio servicioNuevo) {
+	public Servicio[] create(Servicio[] servicioNuevo) {
 		//Traza para la prueba
 		log.info("Voy a guardar al servicio " + servicioNuevo);
-		return servicioRepository.save(servicioNuevo);
+		for(Servicio aux:servicioNuevo)
+			servicioRepository.save(aux);
+			
+		return servicioNuevo;
 	}
 	
 	/**
