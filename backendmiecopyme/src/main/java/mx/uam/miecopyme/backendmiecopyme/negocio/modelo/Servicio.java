@@ -46,5 +46,9 @@ public class Servicio {
 	@NotNull
 	@ApiModelProperty(notes = "Costo del servicio", required = true)
 	private Double costo;
+	
+	public Servicio clone() throws CloneNotSupportedException {
+        return (Servicio) super.clone();
+	}
 
 }

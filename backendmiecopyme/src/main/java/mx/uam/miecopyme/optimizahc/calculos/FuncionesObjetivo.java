@@ -6,32 +6,32 @@ import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Servicio;
 
 public class FuncionesObjetivo {
 
-	public double costo(List<Servicio> cromosoma) {
+	public static double costo(List<Double> costos) {
 		double costoTotal = 0.0;
-		for(Servicio serv: cromosoma) {
-			costoTotal += serv.getCosto();
+		for(double cos: costos) {
+			costoTotal += cos;
 		}
 		return costoTotal;
 	}
 	
-	public double huella(List<Servicio> cromosoma) {
+	public static double huella(List<Double> consumos, List<Integer> tipos, int tamanioCromosoma) {
 		double huella = 0.0;
-		for(Servicio serv: cromosoma) {
-			switch(serv.getTipo()) {
+		for(int i = 0; i < tamanioCromosoma; i++) {
+			switch(tipos.get(i)) {
 				//Electricidad
 				case 1: {
-					huella += serv.getConsumo()*FactoresEmision.ELECTRICIDAD;
+					huella += consumos.get(i)*FactoresEmision.ELECTRICIDAD;
 					break;
 				}
 				//Gas
 				case 2: {
 					//Tipo de gas
-					huella += serv.getConsumo()*FactoresEmision.GLP;
+					huella += consumos.get(i)*FactoresEmision.GLP;
 					break;
 				}
 				//Refrigeración, enfriamiento
 				case 3: case 4: {
-					huella += serv.getConsumo()*FactoresEmision.TRF_KWHATS*FactoresEmision.ELECTRICIDAD;
+					huella += consumos.get(i)*FactoresEmision.TRF_KWHATS*FactoresEmision.ELECTRICIDAD;
 					break;
 				}
 				/*case 4: {
@@ -40,7 +40,7 @@ public class FuncionesObjetivo {
 				}*/
 				//Aire acondicionado, calefacción
 				case 5: case 6:{
-					huella += serv.getConsumo()*FactoresEmision.BTU_KWHATS*FactoresEmision.ELECTRICIDAD;
+					huella += consumos.get(i)*FactoresEmision.BTU_KWHATS*FactoresEmision.ELECTRICIDAD;
 					break;
 				}
 				/*case 6: {
