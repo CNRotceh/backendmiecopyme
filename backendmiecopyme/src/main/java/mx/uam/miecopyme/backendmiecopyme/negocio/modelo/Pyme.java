@@ -42,7 +42,7 @@ public class Pyme {
 	@GeneratedValue
 	private Integer idPyme;
 	
-	@NotBlank
+	
 	@ApiModelProperty(notes = "nombre de la pyme", required = true)
 	private String nombre;
 
