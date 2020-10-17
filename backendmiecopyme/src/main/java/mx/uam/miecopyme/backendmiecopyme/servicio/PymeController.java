@@ -33,7 +33,6 @@ import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Servicio;
 @RestController
 @RequestMapping("/v1") //Versionamiento
 @Slf4j
-
 public class PymeController {
 	@Autowired
 	private PymeService pymeService;

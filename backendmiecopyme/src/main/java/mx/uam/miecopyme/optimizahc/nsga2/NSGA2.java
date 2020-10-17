@@ -29,11 +29,11 @@ public class NSGA2 {
 			costos.add(serv.getCosto());
 			consumos.add(serv.getConsumo());
 			tiposGlobales.add(serv.getTipo());
-			cadenaInicia += " ("+serv.getTipo()+","+serv.getCosto()+"," +serv.getConsumo()+") ";
+			cadenaInicia += " ("+serv.getTipo()+","+String.format("%.2f",serv.getCosto())+"," +String.format("%.2f",serv.getConsumo())+") ";
 		}
 		fitInicial[0] = FuncionesObjetivo.costo(costos);
 		fitInicial[1] = FuncionesObjetivo.huella(consumos,tiposGlobales,tamanioCromosoma);
-		cadenaInicia += "] C: $"+ fitInicial[0] + ", Huella: " + fitInicial[1] + "tCO2";
+		cadenaInicia += "]\nCosto: $"+ fitInicial[0] + ", Huella: " + fitInicial[1] + "tCO2\n";
 		
 		System.out.println(cadenaInicia);
 		
@@ -89,9 +89,9 @@ public class NSGA2 {
 				alternativas.get(i).get(j).setCosto(poblacion[i].getCostos().get(j));
 				alternativas.get(i).get(j).setConsumo(poblacion[i].getConsumos().get(j));
 				alternativas.get(i).get(j).setIdServicio(servicios.get(j).getIdServicio());
-				cadena += " ("+alternativas.get(i).get(j).getTipo()+","+alternativas.get(i).get(j).getCosto()+"," +alternativas.get(i).get(j).getConsumo()+") ";
+				cadena += " ("+alternativas.get(i).get(j).getTipo()+","+String.format("%.2f",alternativas.get(i).get(j).getCosto())+"," +String.format("%.2f",alternativas.get(i).get(j).getConsumo())+") ";
 			}
-			cadena += "] C: $"+ fitness[i][0] + ", Huella: " + fitness[i][1] + "tCO2";
+			cadena += "]\nCosto: $"+ fitness[i][0] + ", Huella: " + fitness[i][1] + "tCO2\n";
 			System.out.println(cadena);
 		}
 	
