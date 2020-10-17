@@ -30,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity //Indica que hay que persistir en BD
 
-public class E_Pyme {
+public class Pyme {
 	@ApiModelProperty(notes = "id del la Pyme", required = true)
 	@Id
 	@GeneratedValue
@@ -38,6 +38,6 @@ public class E_Pyme {
 	
 	@NotBlank
 	@ApiModelProperty(notes = "Lista de servicios", required = true)
-	private ArrayList<Servicio> ListaServicio;
+	private ArrayList<Servicio> servicios = new ArrayList<>();
 
 }

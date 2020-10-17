@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import mx.uam.miecopyme.backendmiecopyme.negocio.Pyme_Service;
 import mx.uam.miecopyme.backendmiecopyme.negocio.ServicioService;
-import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.E_Pyme;
+import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
 import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Servicio;
 
 /**
@@ -35,9 +35,9 @@ public class PymeController {
 	
 	@ApiOperation(value = "Crear Pyme",notes = "Permite crear una nueva Pyme") // Documentacion del api
 	@PostMapping(path = "/pymes", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity <?> create(@RequestBody @Valid E_Pyme nuevaPyme) { //Validaciones
+	public ResponseEntity <?> create(@RequestBody @Valid Pyme nuevaPyme) { //Validaciones
 		log.info("Recibí llamada a create con " + nuevaPyme);
-		E_Pyme pyme = pymeService.create(nuevaPyme);
+		Pyme pyme = pymeService.create(nuevaPyme);
 		
 		if(pyme != null) {
 			return ResponseEntity.status(HttpStatus.CREATED).body(pyme);
@@ -50,7 +50,7 @@ public class PymeController {
 	@GetMapping(path = "/pymes", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> retrieveAll() {
 		
-		Iterable <E_Pyme> result = pymeService.retrieveAll();
+		Iterable <Pyme> result = pymeService.retrieveAll();
 		return ResponseEntity.status(HttpStatus.OK).body(result);	
 	}
 	

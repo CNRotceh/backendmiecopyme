@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import mx.uam.miecopyme.backendmiecopyme.datos.E_PymeRepository;
 
-import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.E_Pyme;
+import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
 
 
 /**
@@ -31,7 +31,7 @@ public class Pyme_Service {
 	 * @return la pyme que se acaba de crear si la creacion es exitosa, null de lo contrario
 	 * 
 	 */
-	public E_Pyme create(E_Pyme pymeNuevo) {
+	public Pyme create(Pyme pymeNuevo) {
 		//Traza para la prueba
 		log.info("Voy a guardar al servicio " + pymeNuevo);
 		return pymeRepository.save(pymeNuevo);
@@ -42,7 +42,7 @@ public class Pyme_Service {
 	 * @param 
 	 * @return
 	 */
-	public Iterable <E_Pyme> retrieveAll () {
+	public Iterable <Pyme> retrieveAll () {
 		log.info("Regresando todos las Pymes:");
 		return pymeRepository.findAll();
 	}
@@ -52,8 +52,8 @@ public class Pyme_Service {
 	 * @param
 	 * @return
 	 */
-	public E_Pyme findByIdServicio(Integer idPyme) {
-		Optional<E_Pyme> pymeOpt = pymeRepository.findById(idPyme);	
+	public Pyme findByIdServicio(Integer idPyme) {
+		Optional<Pyme> pymeOpt = pymeRepository.findById(idPyme);	
 		if(pymeOpt.isPresent()) {
 			log.info("Se ha encontrado la Pyme" + pymeOpt);
 			return pymeOpt.get();
@@ -68,13 +68,13 @@ public class Pyme_Service {
 	 * @param
 	 * @return
 	 */
-	public boolean update(E_Pyme actualizaPyme) {
+	public boolean update(Pyme actualizaPyme) {
 		// Primero veo que si esté en la BD
-		Optional<E_Pyme> pymeOpt = pymeRepository.findById(actualizaPyme.getIdPyme());	
+		Optional<Pyme> pymeOpt = pymeRepository.findById(actualizaPyme.getIdPyme());	
 		if(pymeOpt.isPresent()) {
-			E_Pyme pyme = pymeOpt.get(); // Este es el que está en la bd
+			Pyme pyme = pymeOpt.get(); // Este es el que está en la bd
 			log.info("LA pyme es: " + pyme);
-			pyme.setListaServicio(actualizaPyme.getListaServicio());
+			pyme.setServicios(actualizaPyme.getServicios());
 			log.info("La pyme que se quiere modificar es: " + actualizaPyme);
 			pymeRepository.save(pyme); // Persisto los cambios		
 			return true;
@@ -92,9 +92,9 @@ public class Pyme_Service {
 	 */
 	public boolean delete(Integer idBorraPyme) {
 		
-		Optional <E_Pyme> pymeOpt = pymeRepository.findById(idBorraPyme);	
+		Optional <Pyme> pymeOpt = pymeRepository.findById(idBorraPyme);	
 		if(pymeOpt.isPresent()) {
-			E_Pyme pyme = pymeOpt.get();
+			Pyme pyme = pymeOpt.get();
 			pymeRepository.delete(pyme);
 			//if(!servicioOpt.isPresent())
 			log.info("pyme borrado");

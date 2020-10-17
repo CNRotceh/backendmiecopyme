@@ -2,7 +2,7 @@ package mx.uam.miecopyme.backendmiecopyme.datos;
 
 import org.springframework.data.repository.CrudRepository;
 
-import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.E_Pyme;
+import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
 
 /**
  * Guardado y almacenamiento de pyme
@@ -11,6 +11,6 @@ import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.E_Pyme;
  *
  */
 
-public interface E_PymeRepository extends CrudRepository <E_Pyme, Integer>{
+public interface E_PymeRepository extends CrudRepository <Pyme, Integer>{
 
 }
