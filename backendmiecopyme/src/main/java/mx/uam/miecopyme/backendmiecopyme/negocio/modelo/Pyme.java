@@ -46,8 +46,8 @@ public class Pyme {
 	@JoinColumn(name = "idPyme") // No crea tabla intermedia
 	private List<Servicio> servicios = new ArrayList <> ();
 
-	public void addServicio(Optional<Servicio> historiaOpt) {
-		servicios.add(historiaOpt.get());
+	public boolean addServicio(Servicio serv) {
+		return servicios.add(serv);
 		
 	}
 

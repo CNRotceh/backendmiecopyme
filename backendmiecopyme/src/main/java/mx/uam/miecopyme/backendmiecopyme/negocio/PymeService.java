@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import mx.uam.miecopyme.backendmiecopyme.datos.PymeRepository;
 
 import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
+import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Servicio;
 
 
 /**
@@ -23,6 +24,7 @@ import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
 public class PymeService {
 	@Autowired
 	private PymeRepository pymeRepository;
+	private ServicioService servicioService;
 	
 	/**
 	 * 
@@ -51,7 +53,7 @@ public class PymeService {
 	 * @param
 	 * @return
 	 */
-	public Pyme findByIdServicio(Integer idPyme) {
+	public Pyme findByIdPyme( Integer idPyme) {
 		Optional<Pyme> pymeOpt = pymeRepository.findById(idPyme);	
 		if(pymeOpt.isPresent()) {
 			log.info("Se ha encontrado la Pyme" + pymeOpt);
@@ -105,5 +107,32 @@ public class PymeService {
 	}
 
 
+public boolean addServicioPyme(Integer pymeId, Integer idServicio) {
+		
+		log.info("Agregando el servicio  la pyme "+idServicio+" al grupo "+pymeId);
+		
+		// 1.- Recuperamos primero al servicio
+		Servicio serv = servicioService.findByIdServicio(pymeId);
+		
+		// 2.- Recuperamos a la pyme
+		Optional <Pyme> pymeOpt = pymeRepository.findById(pymeId);
+		
+		// 3.- Verificamos que el servicio y la pyme existan
+		if(!pymeOpt.isPresent() || serv == null) {
+			
+			log.info("No se encontro la pyme o el servicio");
+			
+			return false;
+		}
+		
+		// 4.- Agrego el alumno al grupo
+		Pyme pyme = pymeOpt.get();
+		pyme.addServicio(serv);
+		
+		// 5.- Persistir el cambio
+		pymeRepository.save(pyme);
+		
+		return true;
+	}
 
 }
