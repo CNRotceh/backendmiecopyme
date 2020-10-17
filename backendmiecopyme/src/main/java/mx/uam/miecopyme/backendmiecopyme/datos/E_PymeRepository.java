@@ -1,0 +1,16 @@
+package mx.uam.miecopyme.backendmiecopyme.datos;
+
+import org.springframework.data.repository.CrudRepository;
+
+import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.E_Pyme;
+
+/**
+ * Guardado y almacenamiento de pyme
+ * 
+ * @author Prograsaur Studios
+ *
+ */
+
+public interface E_PymeRepository extends CrudRepository <E_Pyme, Integer>{
+
+}
