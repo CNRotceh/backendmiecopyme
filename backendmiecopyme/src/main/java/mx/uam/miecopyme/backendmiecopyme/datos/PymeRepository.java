@@ -11,6 +11,6 @@ import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
  *
  */
 
-public interface E_PymeRepository extends CrudRepository <Pyme, Integer>{
+public interface PymeRepository extends CrudRepository <Pyme, Integer>{
 
 }

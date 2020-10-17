@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import mx.uam.miecopyme.backendmiecopyme.negocio.Pyme_Service;
+import mx.uam.miecopyme.backendmiecopyme.negocio.PymeService;
 import mx.uam.miecopyme.backendmiecopyme.negocio.ServicioService;
 import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
 import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Servicio;
@@ -31,7 +31,7 @@ import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Servicio;
 
 public class PymeController {
 	@Autowired
-	private Pyme_Service pymeService;
+	private PymeService pymeService;
 	
 	@ApiOperation(value = "Crear Pyme",notes = "Permite crear una nueva Pyme") // Documentacion del api
 	@PostMapping(path = "/pymes", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

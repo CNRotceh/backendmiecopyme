@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import mx.uam.miecopyme.backendmiecopyme.datos.E_PymeRepository;
+import mx.uam.miecopyme.backendmiecopyme.datos.PymeRepository;
 
 import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
 
@@ -20,10 +20,9 @@ import mx.uam.miecopyme.backendmiecopyme.negocio.modelo.Pyme;
  */
 @Service
 @Slf4j
-
-public class Pyme_Service {
+public class PymeService {
 	@Autowired
-	private E_PymeRepository pymeRepository;
+	private PymeRepository pymeRepository;
 	
 	/**
 	 * 

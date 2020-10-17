@@ -1,11 +1,16 @@
 package mx.uam.miecopyme.backendmiecopyme.negocio.modelo;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -35,9 +40,16 @@ public class Pyme {
 	@Id
 	@GeneratedValue
 	private Integer idPyme;
-	
-	@NotBlank
-	@ApiModelProperty(notes = "Lista de servicios", required = true)
-	private ArrayList<Servicio> servicios = new ArrayList<>();
+
+	@Builder.Default
+	@OneToMany(targetEntity = Servicio.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "idPyme") // No crea tabla intermedia
+	private List<Servicio> servicios = new ArrayList <> ();
+
+	public void addServicio(Optional<Servicio> historiaOpt) {
+		servicios.add(historiaOpt.get());
+		
+	}
+
 
 }

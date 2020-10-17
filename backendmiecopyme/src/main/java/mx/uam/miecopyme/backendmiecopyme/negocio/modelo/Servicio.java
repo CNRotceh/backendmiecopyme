@@ -35,7 +35,7 @@ public class Servicio {
 	@GeneratedValue
 	private Integer idServicio;
 	
-	@NotBlank
+	@NotNull
 	@ApiModelProperty(notes = "Tipo de servicio", required = true)
 	private Integer tipo;
 	
