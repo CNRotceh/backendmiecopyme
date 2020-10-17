@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,11 +36,12 @@ public class ServicioController {
 	@Autowired
 	private ServicioService servicioService;
 	
-	@ApiOperation(value = "Crear servicio",notes = "Permite crear un nuevo servicio") // Documentacion del api
+	@CrossOrigin(origins = "http://localhost:8100")
+	@ApiOperation(value = "Crear servicios",notes = "Permite crear un nuevo servicio") // Documentacion del api
 	@PostMapping(path = "/servicios", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity <?> create(@RequestBody @Valid Servicio nuevoServicio) { //Validaciones
+	public ResponseEntity <?> create(@RequestBody @Valid Servicio[] nuevoServicio) { //Validaciones
 		log.info("Recibí llamada a create con " + nuevoServicio);
-		Servicio servicio = servicioService.create(nuevoServicio);
+		Servicio[] servicio = servicioService.create(nuevoServicio);
 		
 		if(servicio != null) {
 			return ResponseEntity.status(HttpStatus.CREATED).body(servicio);
@@ -48,6 +50,7 @@ public class ServicioController {
 		}
 	}
 	
+	@CrossOrigin(origins = "http://localhost:8100")
 	@ApiOperation(value = "Obtener Servicio",notes = "Permite regresar todos los Servicioes") // Documentacion del api
 	@GetMapping(path = "/servicios", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> retrieveAll() {
@@ -56,7 +59,7 @@ public class ServicioController {
 		return ResponseEntity.status(HttpStatus.OK).body(result);	
 	}
 	
-
+	@CrossOrigin(origins = "http://localhost:8100")
 	@ApiOperation(value = "Obtener Servicioes",notes = "Permite obtener un Servicio por su id") // Documentacion del api
 	@GetMapping(path = "/servicios/{idServicio}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> retrieve(@PathVariable("idServicio") Integer idServicio) {
