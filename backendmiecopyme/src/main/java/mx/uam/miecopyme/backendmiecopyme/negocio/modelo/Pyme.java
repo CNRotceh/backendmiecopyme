@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -40,6 +41,10 @@ public class Pyme {
 	@Id
 	@GeneratedValue
 	private Integer idPyme;
+	
+	@NotBlank
+	@ApiModelProperty(notes = "nombre de la pyme", required = true)
+	private String nombre;
 
 	@Builder.Default
 	@OneToMany(targetEntity = Servicio.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
