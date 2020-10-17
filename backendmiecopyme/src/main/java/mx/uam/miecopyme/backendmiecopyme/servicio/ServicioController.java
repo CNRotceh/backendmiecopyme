@@ -73,6 +73,7 @@ public class ServicioController {
 	@PutMapping(path = "/servicios/{idServicio}", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> update(@PathVariable("idServicio") @Valid Integer idServicio, @RequestBody Servicio actualizaServicio) {
 		log.info("Buscando al Servicio con id "+ idServicio + " para actualizar");
+		actualizaServicio.setIdServicio(idServicio);
 		Boolean actualizado = servicioService.update(actualizaServicio);
 		if(actualizado) {
 			return ResponseEntity.status(HttpStatus.OK).body(actualizaServicio);

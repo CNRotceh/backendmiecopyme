@@ -48,8 +48,10 @@ public class Pyme {
 
 	public void addServicio(Optional<Servicio> historiaOpt) {
 		servicios.add(historiaOpt.get());
-		
 	}
-
-
+	
+	public void removeServicio(Optional<Servicio> historiaOpt) {
+		servicios.remove(historiaOpt.get());
+	}
+	
 }
