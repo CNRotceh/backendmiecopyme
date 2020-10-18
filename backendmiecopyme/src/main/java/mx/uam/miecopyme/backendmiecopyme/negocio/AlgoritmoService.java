@@ -29,13 +29,14 @@ public class AlgoritmoService {
 		pymeActual.setHuella(fitness[0][1]);
 		
 		List<Pyme> pymesAlternas = new ArrayList<Pyme>();
-		for(int i = 0; i < soluciones.size(); i++) {
+		pymesAlternas.add(pymeActual);
+		for(int i = 1; i < soluciones.size(); i++) {
 			pymesAlternas.add(new Pyme());
 			pymesAlternas.get(i).setIdPyme(pymeActual.getIdPyme());
 			pymesAlternas.get(i).setNombre(pymeActual.getNombre());
-			pymesAlternas.get(i).getServicios().addAll(soluciones.get(i+1));
-			pymesAlternas.get(i).setCosto(fitness[i+1][0]);
-			pymesAlternas.get(i).setHuella(fitness[i+1][1]);
+			pymesAlternas.get(i).getServicios().addAll(soluciones.get(i));
+			pymesAlternas.get(i).setCosto(fitness[i][0]);
+			pymesAlternas.get(i).setHuella(fitness[i][1]);
 		}
 		return pymesAlternas;
 	}
