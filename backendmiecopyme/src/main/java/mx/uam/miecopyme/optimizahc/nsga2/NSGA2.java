@@ -94,6 +94,11 @@ public class NSGA2 {
 				alternativas.get(i).get(j).setCosto(poblacion[i].getCostos().get(j));
 				alternativas.get(i).get(j).setConsumo(poblacion[i].getConsumos().get(j));
 				alternativas.get(i).get(j).setIdServicio(servicios.get(j).getIdServicio());
+				alternativas.get(i).get(j).setDescripcion(servicios.get(j).getDescripcion());
+				alternativas.get(i).get(j).setNombreImagen(servicios.get(j).getNombreImagen());
+				alternativas.get(i).get(j).setNombreServicio(servicios.get(j).getNombreServicio());
+				alternativas.get(i).get(j).setUnidadConsumo(servicios.get(j).getUnidadConsumo());
+				alternativas.get(i).get(j).setUnidadCosto(servicios.get(j).getUnidadCosto());
 				cadena += " ("+alternativas.get(i).get(j).getTipo()+","+String.format("%.2f",alternativas.get(i).get(j).getCosto())+"," +String.format("%.2f",alternativas.get(i).get(j).getConsumo())+") ";
 			}
 			fit[i][0] = fitness[i][0];

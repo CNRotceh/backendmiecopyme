@@ -51,9 +51,17 @@ public class Servicio {
 	@ApiModelProperty(notes = "Imagen relacionada", required = true)
 	private  String nombreImagen;
 	
-	
 	@ApiModelProperty(notes = "Descripcion", required = true)
 	private  String descripcion;
+	
+	@ApiModelProperty(notes = "Descripcion", required = true)
+	private  String nombreServicio;
+	
+	@ApiModelProperty(notes = "Descripcion", required = true)
+	private  String unidadConsumo;
+	
+	@ApiModelProperty(notes = "Descripcion", required = true)
+	private  String unidadCosto;
 	
 	
 	public Servicio clone() throws CloneNotSupportedException {
