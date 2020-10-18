@@ -35,6 +35,11 @@ public class NSGA2 {
 		fit[0][1] = FuncionesObjetivo.huella(consumos,tiposGlobales,tamanioCromosoma);
 		cadenaInicia += "]\nCosto: $"+ fit[0][0] + ", Huella: " + fit[0][1] + "tCO2\n";
 		
+		List<ArrayList<Servicio>> alternativas = new ArrayList<ArrayList<Servicio>>();
+		alternativas.add(new ArrayList<Servicio>());
+		alternativas.get(0).addAll(servicios);
+		
+		
 		System.out.println(cadenaInicia);
 		
 		
@@ -79,10 +84,8 @@ public class NSGA2 {
 			fitness[j][0] = FuncionesObjetivo.costo(poblacion[j].getCostos());
 			fitness[j][1] = FuncionesObjetivo.huella(poblacion[j].getConsumos(),tiposGlobales,tamanioCromosoma);
 		}
-		List<ArrayList<Servicio>> alternativas = new ArrayList<ArrayList<Servicio>>();
-		alternativas.add(new ArrayList<Servicio>());
-		alternativas.get(0).addAll(servicios);
-		for(int i = 0; i < 3; i++) {
+		
+		for(int i = 1; i < 4; i++) {
 			alternativas.add(new ArrayList<Servicio>());
 			String cadena = "Solucion " + (i+1) + ": [";
 			for(int j = 0; j < tamanioCromosoma; j++) {
@@ -93,8 +96,8 @@ public class NSGA2 {
 				alternativas.get(i).get(j).setIdServicio(servicios.get(j).getIdServicio());
 				cadena += " ("+alternativas.get(i).get(j).getTipo()+","+String.format("%.2f",alternativas.get(i).get(j).getCosto())+"," +String.format("%.2f",alternativas.get(i).get(j).getConsumo())+") ";
 			}
-			fit[i+1][0] = fitness[i][0];
-			fit[i+1][1] = fitness[i][1];
+			fit[i][0] = fitness[i][0];
+			fit[i][1] = fitness[i][1];
 			cadena += "]\nCosto: $"+ fitness[i][0] + ", Huella: " + fitness[i][1] + "tCO2\n";
 			System.out.println(cadena);
 		}

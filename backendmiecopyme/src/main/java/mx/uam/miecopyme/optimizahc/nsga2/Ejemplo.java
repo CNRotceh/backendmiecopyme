@@ -22,6 +22,16 @@ public class Ejemplo {
 		}
 		double[][] fitness = new double[4][2];
 		List<ArrayList<Servicio>> soluciones = algor.nsga2(padre, fitness);
+		int indice = 0;
+		for(ArrayList<Servicio> servs: soluciones) {
+			String cadena = "Solución: [";
+			for(Servicio srv: servs) {
+				cadena+= " ("+srv.getTipo()+","+String.format("%.2f",srv.getCosto())+","+String.format("%.2f",srv.getConsumo())+") ";
+			}
+			cadena += "] Costo" + fitness[indice][0] + " Huella=" + fitness[indice][1] + "\n";
+			System.out.println(cadena);
+			indice += 1;
+		}
 		//System.out.println("fitness:" + fitness[0][0]);
 
 	}
