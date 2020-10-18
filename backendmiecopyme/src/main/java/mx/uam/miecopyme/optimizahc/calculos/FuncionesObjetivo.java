@@ -48,6 +48,11 @@ public class FuncionesObjetivo {
 					huella += serv.getConsumo()*FactoresEmision.BTU_KWHATS*FactoresEmision.ELECTRICIDAD;
 					break;
 				}*/
+				//Vehículo
+				case 7:{
+					huella += consumos.get(i)*FactoresEmision.GASOLINA_E5;
+					break;
+				}
 				default: {
 					break;
 				}

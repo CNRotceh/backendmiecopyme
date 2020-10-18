@@ -13,7 +13,7 @@ public class Ejemplo {
 		Random rand = new Random();
 		NSGA2 algor = new NSGA2();
 		
-		for(int i = 0; i < 6; i++) {
+		for(int i = 0; i < 7; i++) {
 			padre.add(new Servicio());
 			padre.get(i).setIdServicio(i+1);
 			padre.get(i).setTipo(i+1);
