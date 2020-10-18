@@ -38,7 +38,7 @@ public class PymeController {
 	private PymeService pymeService;
 	
 	
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "https://smie.000webhostapp.com")
 	@ApiOperation(value = "Crear pyme",notes = "Permite crear un nuevo pyme, su id debe ser única") // Documentacion del api
 	@PostMapping(path = "/pymes", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> create(@RequestBody @Valid Pyme nuevoPyme) { //Validaciones
@@ -53,7 +53,7 @@ public class PymeController {
 		}
 	}
 		
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "https://smie.000webhostapp.com")
 	@ApiOperation(value = "Obtener pyme",notes = "Permite regresar todos los pymes") // Documentacion del api
 	@GetMapping(path = "/pymes", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> retrieveAll() {
@@ -62,7 +62,7 @@ public class PymeController {
 		return ResponseEntity.status(HttpStatus.OK).body(result);	
 	}
 
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "https://smie.000webhostapp.com")
 	@ApiOperation(value = "Obtener pyme",notes = "Permite obtener un pyme por su id") // Documentacion del api
 	@GetMapping(path = "/pymes/{idPyme}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> retrieve(@PathVariable("idPyme") Integer idPyme) {
@@ -109,7 +109,7 @@ public class PymeController {
 	 * @return
 	 */
 	
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "https://smie.000webhostapp.com")
 	@PostMapping(path = "/pymes/{idPyme}/servicios", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> addServicioToPyme(@PathVariable("idPyme") Integer idPyme,@RequestParam("idServicio") Integer[] idServicio) {
 		

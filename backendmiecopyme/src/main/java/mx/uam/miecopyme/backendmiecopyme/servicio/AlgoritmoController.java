@@ -32,7 +32,7 @@ public class AlgoritmoController {
 	@Autowired
 	private AlgoritmoService algoritmoService;
 	
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "https://smie.000webhostapp.com")
 	@ApiOperation(value = "Ejecutar algoritmo",notes = "Permite crear alternativas de acuerdo al algoritmo genetic") // Documentacion del api
 	@PostMapping(path = "/algoritmo", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> ejecutar(@RequestBody @Valid Pyme pymeActual) { //Validaciones

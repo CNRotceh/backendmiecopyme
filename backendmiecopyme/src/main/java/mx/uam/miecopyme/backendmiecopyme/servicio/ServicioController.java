@@ -36,7 +36,7 @@ public class ServicioController {
 	@Autowired
 	private ServicioService servicioService;
 	
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "https://smie.000webhostapp.com")
 	@ApiOperation(value = "Crear servicios",notes = "Permite crear un nuevo servicio") // Documentacion del api
 	@PostMapping(path = "/servicios", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> create(@RequestBody @Valid Servicio[] nuevoServicio) { //Validaciones
@@ -50,7 +50,7 @@ public class ServicioController {
 		}
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "https://smie.000webhostapp.com")
 	@ApiOperation(value = "Obtener Servicio",notes = "Permite regresar todos los Servicioes") // Documentacion del api
 	@GetMapping(path = "/servicios", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> retrieveAll() {
@@ -59,7 +59,7 @@ public class ServicioController {
 		return ResponseEntity.status(HttpStatus.OK).body(result);	
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8100")
+	@CrossOrigin(origins = "https://smie.000webhostapp.com")
 	@ApiOperation(value = "Obtener Servicioes",notes = "Permite obtener un Servicio por su id") // Documentacion del api
 	@GetMapping(path = "/servicios/{idServicio}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> retrieve(@PathVariable("idServicio") Integer idServicio) {
